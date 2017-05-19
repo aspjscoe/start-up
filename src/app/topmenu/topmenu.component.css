@@ -1,20 +1,12 @@
 .topmenu
 {
 border:solid black 1px;
-margin-top:-670px;
- height:75px;
+height:75px;
  width:1330px;	
 }
-
-
 .main-menu, .sub-menu
 {
 list-style:none;
-
-}
-.main-menu
-{
-margin-top:-570px;
 }
 .main-menu .main-menu-item:hover
 {
