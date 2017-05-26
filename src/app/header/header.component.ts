@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  constructor(private elementRef:ElementRef) {};
+
+ngAfterViewInit() {
+  var s = document.createElement("script");
+  s.type = "text/javascript";
+  s.src = "assets/slider.js";
+  this.elementRef.nativeElement.appendChild(s);
+}
   public Menus =[
                {
                  text:"Kitchenware",

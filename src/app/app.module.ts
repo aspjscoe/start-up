@@ -7,13 +7,13 @@ import { SubComponent } from './subheader/subheader.component';
 
 import { MenusComponent } from './menus/menus.component';
 import { TopComponent } from './topmenu/topmenu.component';
-import { SliderComponent } from './slider/slider.component';
+
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent,SubComponent,MenusComponent,TopComponent,SliderComponent
+    AppComponent,HeaderComponent,SubComponent,MenusComponent,TopComponent,
   ],
   imports: [
     BrowserModule,
