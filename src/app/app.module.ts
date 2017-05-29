@@ -8,12 +8,13 @@ import { SubComponent } from './subheader/subheader.component';
 import { MenusComponent } from './menus/menus.component';
 import { TopComponent } from './topmenu/topmenu.component';
 
+import { IfComponent } from './if-example/if-example.component';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent,SubComponent,MenusComponent,TopComponent,
+    AppComponent,HeaderComponent,SubComponent,MenusComponent,TopComponent,IfComponent
   ],
   imports: [
     BrowserModule,

@@ -5,11 +5,18 @@
   <li><img src="/assets/images/img1.png" title="Funky roots" /></li>
   <li><img src="/assets/images/img2.png" title="The long and winding road" /></li>
   <li><img src="/assets/images/img3.png" title="Happy trees" /></li>
+   <li><img src="/assets/images/img1.png" title="Funky roots" /></li>
+  <li><img src="/assets/images/img2.png" title="The long and winding road" /></li>
+  <li><img src="/assets/images/img3.png" title="Happy trees" /></li>
+  <li><img src="/assets/images/img3.png" title="Happy trees" /></li>
+  <li><img src="/assets/images/img1.png" title="Funky roots" /></li>
+
 </ul>
 
-
-<ul *ngFor="let Menu of Menus" type="none" class="{{Menu.class}}">
-<li>{{Menu.text}}</li>
-<li class="small">{{Menu.small}}</li>
-</ul>
-</div>
+ <div id="bx-pager">
+     <a href="" *ngFor="let Menu of Menus;  let i = index" [attr.data-slide-index]="i" class="{{Menu.class}}">
+      <div>{{Menu.text}}</div>
+      <div class="small">{{Menu.small}}
+        </div>
+    </a>
+    </div>

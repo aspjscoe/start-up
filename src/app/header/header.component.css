@@ -2,27 +2,23 @@
     {
     
     border:solid royalblue 1px;
-    
-    height:393px;
+     height:393px;
     width:100%;
     }
-    .first
-    {
-        z-index:100;
-        margin-top: -80px;
-    	margin-left:6cm;
-    	background-color:White;
-    	border-bottom-color:yellowgreen;
-        
-    }
+    
+    .active
+{
+background-color:White;
+border-bottom-color:yellowgreen;
+}
     .small
     {
     font-size:x-small;	
     }
-    ul
+    a
     {
       
-    margin-top:-25px;
+    margin-top:-40px;
  	font-family:Verdana;
  	float:left;
     background-color:lightgray;
