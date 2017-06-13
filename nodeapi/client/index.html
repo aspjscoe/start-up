@@ -5,11 +5,15 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.post("http://127.0.0.1:8081/users",
-        {
-          name: "Donald Duck",
-          city: "Duckburg"
-        },
+        $.post("http://127.0.0.1:8081/addUser",
+       { 
+   "user4" : {
+      "name" : "mohit",
+      "password" : "password4",
+      "profession" : "teacher",
+      "id": 4
+   }
+}, 
         function(data){
              $("#div1").html(data);
         });
