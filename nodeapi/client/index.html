@@ -5,27 +5,24 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.post("http://127.0.0.1:8081/addUser",
-       { 
-   "user4" : {
-      "name" : "mohit",
-      "password" : "password4",
-      "profession" : "teacher",
-      "id": 4
-   }
-}, 
+     $.post("http://127.0.0.1:8081/users",
+        {
+  userName:"abarna"
+        },
         function(data){
              $("#div1").html(data);
         });
-    });
+   });
 });
 </script>
 </head>
 <body>
 
-<div id="div1"><h2> Text</h2></div>
-<button>Get </button>
 
+<input id="div1"  type="text"></div>
+ 
+<button>Get </button>
+               
 
 </body>
 </html>

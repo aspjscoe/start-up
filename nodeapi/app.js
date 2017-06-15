@@ -1,5 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+app.use(bodyParser.json());
 app.use(express.static('client'));
 var fs = require("fs");
 
@@ -9,18 +11,12 @@ app.get('/users', function (req, res) {
    res.send( data );
    });
 })
-app.post('/addUser', function (req, res) {
-   // First read existing users.
-   fs.readFile( __dirname + "/" + "addUser.json", 'utf8', function (err, data) {
-       data = JSON.parse( user);
-       data["user4"] = user["user4"];
+app.post('/users', function(req, res){
+  var userName = req.body.userName;
+  var html="hello"+userName;
+ res.send(html);
 
-      var file = JSON.stringify(data);
-
- fs.writeFileSync('addUser.json',file); 
- res.send(file);
-   });
-})
+});
 
 var server = app.listen(8081, function () {
 
