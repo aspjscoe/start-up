@@ -12,9 +12,10 @@ app.get('/users', function (req, res) {
    });
 })
 app.post('/users', function(req, res){
-  var userName = req.body.userName;
+    var userName =req.body.userName;
   var html="hello"+userName;
- res.send(html);
+  var ds=JSON.stringify(html);
+ res.send(ds);
 
 });
 
@@ -25,3 +26,4 @@ var server = app.listen(8081, function () {
   console.log("Example app listening at http://%s:%s", host, port)
 
 })
+         
