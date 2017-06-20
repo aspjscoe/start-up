@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+     $.get("http://127.0.0.1:8081/users",
+       
+        function(data){
+              
+                    $("table").html("<tr><th>Username</th>"+
+                    "<th>Password</th>"+"<th>id</th></tr>"+ 
+                    "<tr><td>Abarna</td>"+"<td>abarna</td>"+
+                    "<td>1</td></tr>"+"<tr><td>Anu</td>"+
+                    "<td>anu</td>"+"<td>2</td></tr>"+"<tr><td>Radha</td>"+
+                    "<td>radha</td>"+"<td>3</td></tr>");
+    });
+        });
+   });
+
+</script>
+</head>
+<body>
+<button>click</button>
+<table>
+
+</table>
+</body>
+</html> 
+
