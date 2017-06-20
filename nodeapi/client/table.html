@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +7,26 @@ $(document).ready(function(){
     $("button").click(function(){
      $.get("http://127.0.0.1:8081/users",
        
-        function(data){
-              
-                    $("table").html("<tr><th>Username</th>"+
-                    "<th>Password</th>"+"<th>id</th></tr>"+ 
-                    "<tr><td>Abarna</td>"+"<td>abarna</td>"+
-                    "<td>1</td></tr>"+"<tr><td>Anu</td>"+
-                    "<td>anu</td>"+"<td>2</td></tr>"+"<tr><td>Radha</td>"+
-                    "<td>radha</td>"+"<td>3</td></tr>");
-    });
-        });
+function(data){
+    var users = data;
+    var tableHtml = "<tr><td>User Id</td><td>User Name</td><td>Profession</td></tr>"; 
+   for ( key in users)
+     {
+           if (users.hasOwnProperty(key)) 
+           {
+                 var user = users[key];
+                 var row = "<tr>";
+                 row = row + "<td>" + users.id + "</td>";
+                 row = row + "<td>" + users.name + "</td>";
+                 row = row + "<td>" + users.profession+ "</td>";
+                 row = row + "</tr>";
+                 tableHtml = tableHtml + row;
+          }      
+    }
+    $("table").html(tableHtml);
+} );       
    });
+});
 
 </script>
 </head>
@@ -30,4 +37,5 @@ $(document).ready(function(){
 </table>
 </body>
 </html> 
+
 
