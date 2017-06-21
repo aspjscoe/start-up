@@ -6,35 +6,61 @@
 $(document).ready(function(){
     $("button").click(function(){
      $.get("http://127.0.0.1:8081/users",
-       
-function(data){
-    var users = data;
-    var tableHtml = "<tr><td>User Id</td><td>User Name</td><td>Profession</td></tr>"; 
-   for ( key in users)
+  function(data){
+    var users =JSON.parse(data);
+      var tableHtml = "<tr><td>User Id</td><td>User Name</td><td>Profession</td><td>Email</td><td><td>Phone no</td></td></tr>";
+    for (var key in users)
      {
-           if (users.hasOwnProperty(key)) 
+    if (users.hasOwnProperty(key)) 
            {
                  var user = users[key];
-                 var row = "<tr>";
-                 row = row + "<td>" + users.id + "</td>";
-                 row = row + "<td>" + users.name + "</td>";
-                 row = row + "<td>" + users.profession+ "</td>";
+                  var row = "<tr>";
+                 row = row + "<td>" + user.id + "</td>";
+                 row = row + "<td>" + user.name + "</td>";
+                 row = row + "<td>" + user.profession+ "</td>";
+                 row = row + "<td>" + user.email+ "</td>";
+                  row = row + "<td>" + user.phoneno+ "</td>";
                  row = row + "</tr>";
                  tableHtml = tableHtml + row;
           }      
     }
     $("table").html(tableHtml);
-} );       
-   });
+     });
+     });
+
+$("#save").click(function() {
+var user={id:$("#id").val(),
+       name:$("#name").val(),
+       profession:$("#profession").val(),
+       email:$("#email").val(),
+       pnone:$("#pnone").val()
+  };
+  $("#save").html(user);
 });
 
+});
 </script>
 </head>
 <body>
 <button>click</button>
 <table>
-
 </table>
+  <label >Id</label>
+  <input type="text"  id="id">
+  <br>
+  <label >Name</label>
+  <input type="text"  id="name">
+   <br>
+  <label >Profession</label>
+  <input type="text"  id="profession">
+   <br>
+  <label >Email</label>
+  <input type="text"  id="email">
+   <br>
+  <label >Phone</label>
+  <input type="text"  id="pnone">
+  <button id="save">save</button>
+
 </body>
 </html> 
 
