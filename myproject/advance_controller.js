@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  
+
     //start delete api
     function deleteFile(req, res) {
         var fs = require("fs");
@@ -61,24 +61,44 @@ module.exports = function (app) {
     }
     app.get('/advance/:id', getById);
 
+    // start post api in table
     function post(req, res) {
         var postedUser = req.body;
-        var fs = require("fs");
-        var data = fs.readFileSync("advance.json");
-        var advance = JSON.parse(data);
-        advance.push(postedUser);
-        var dataToSave = JSON.stringify(advance);
-        fs.writeFileSync("advance.json", dataToSave);
-        res.send(advance);
+        var dboperations = require("./db-operations.js");
+        dboperations.save("advance", postedUser, function (err, result) {
+            if (err) {
+                res.send("Error in save");
+            }
+            else {
+                dboperations.getAll("advance", function (err, objects) {
+                    if (err) {
+                        res.send("Error in save");
+                    }
+                    else {
+                        res.send(objects);
+                    }
+                });
+            }
+        });
     }
-    app.post('/advance', post);
 
+    app.post('/advance', post);
+    //end
+    //starts getall in table
 
     function getAll(req, res) {
-        var fs = require('fs');
-        var data = fs.readFileSync("advance.json");
-        var advance = JSON.parse(data);
-        res.send(advance);
+        var dboperations = require("./db-operations.js");
+        dboperations.getAll("advance", function (err, objects) {
+            if (err) {
+                res.send("Error in getall");
+            }
+            else {
+                res.send(objects);
+            }
+        });
     }
-    app.get('/advance', getAll)
+
+    app.get('/advance', getAll);
+    //end
+
 }

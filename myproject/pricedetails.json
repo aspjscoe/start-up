@@ -1,1 +1,1 @@
-[{"id":"1","pcode":"121","mrp":"700","unitspcbb":"80","unitsppcs":"70","awprice":"680","taxvalue":"20","status":"available","casevalue":"00"}]
+[{"id":"1","pcode":"121","mrp":"700","unitspcbb":"80","unitsppcs":"70","awprice":"680","taxvalue":"20","status":"available","casevalue":"00"},{"id":"2","pcode":"212","mrp":"565","unitspcbb":"56","unitsppcs":"87","awprice":"46","taxvalue":"43","status":"not available","casevalue":"00"},{"id":"3","pcode":"656","mrp":"54","unitspcbb":"4546","unitsppcs":"55","awprice":"89","taxvalue":"763","status":"available","casevalue":"98"}]

@@ -12,16 +12,17 @@ function onDeleteButtonClick() {
         url: "http://127.0.0.1:8081/advance/" + id,
         method: "DELETE",
         data: id,
-        success: onDeleteAdvance,
+        success: onDeleteadvance,
         error: onError
     };
     $.ajax(requestParams);
 }
 
-function onDeleteAdvance(result) {
+function onDeleteadvance(result) {
     var advance = result;
     createTable(advance);
 }
+
 
 
 function onUpdateButtonClick() {
@@ -36,18 +37,19 @@ function onUpdateButtonClick() {
         url: "http://127.0.0.1:8081/advance/" + user.id,
         method: "PUT",
         data: user,
-        success: onPutAdvance,
+        success: onPutadvance,
         error: onError
     };
     $.ajax(requestParams);
 }
-function onPutAdvance(result) {
+function onPutadvance(result) {
     var advance = result;
     createTable(advance)
 }
 function onError(result) {
     window.alert(result.responseText);
 }
+
 
 function onSaveButtonClick() {
 
@@ -57,10 +59,11 @@ function onSaveButtonClick() {
         eid: $("#eid").val(),
         reason: $("#reason").val(),
         amount: $("#amount").val()
+
     }
-    $.post("http://127.0.0.1:8081/advance", user, onPostAdvance);
+    $.post("http://127.0.0.1:8081/advance", user, onPostUsers);
 }
-function onPostAdvance(result) {
+function onPostUsers(result) {
     var advance = result;
     createTable(advance);
 }
@@ -70,7 +73,7 @@ function onGetUsers(result) {
     createTable(advance);
 }
 function createTable(advance) {
-    var tableHtml = "<tr><td>ID</td><td>Date</td><td>Eid</td><td>Reason</td><td>Amount</td></tr>";
+    var tableHtml = "<tr><td>Id</td><td>Date</td><td>Eid</td><td>Reason</td><td>Amount</td></tr>";
     for (var i = 0; i < advance.length; i++) {
         var row = "<tr>";
         row = row + "<td>" + advance[i].id + "</td>";
@@ -85,6 +88,7 @@ function createTable(advance) {
     tableHtml = tableHtml + "</table>";
     $("#table").html(tableHtml);
 }
+
 function onEdit(userId) {
     var requestParams = {
         url: "http://127.0.0.1:8081/advance/" + userId,
@@ -103,8 +107,10 @@ function onGetUser(result) {
 }
 function updateTextboxes(user) {
     $("#id").val(user.id);
+
     $("#date").val(user.date);
     $("#eid").val(user.eid);
     $("#reason").val(user.reason);
     $("#amount").val(user.amount);
+
 }
