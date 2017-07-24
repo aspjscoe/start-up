@@ -62,24 +62,60 @@ module.exports = function (app) {
     app.get('/areasalesman/:id', getById);
 
 
+    // start post api in table
     function post(req, res) {
         var postedUser = req.body;
-        var fs = require("fs");
-        var data = fs.readFileSync("areasalesman.json");
-        var areasalesman = JSON.parse(data);
-        areasalesman.push(postedUser);
-        var dataToSave = JSON.stringify(areasalesman);
-        fs.writeFileSync("areasalesman.json", dataToSave);
-        res.send(areasalesman);
+        var dboperations = require("./db_operations.js");
+        dboperations.save("areasalesman", postedUser, function (err, result) {
+            if (err) {
+                res.send("Error in save");
+            }
+            else {
+                dboperations.getAll("areasalesman", function (err, objects) {
+                    if (err) {
+                        res.send("Error in save");
+                    }
+                    else {
+                        res.send(objects);
+                    }
+                });
+            }
+        });
     }
-    app.post('/areasalesman', post);
 
+    app.post('/areasalesman', post);
+    //end
+    //starts getall in table
 
     function getAll(req, res) {
-        var fs = require('fs');
-        var data = fs.readFileSync("areasalesman.json");
-        var areasalesman = JSON.parse(data);
-        res.send(areasalesman);
+        var dboperations = require("./db_operations.js");
+        dboperations.getAll("areasalesman", function (err, objects) {
+            if (err) {
+                res.send("Error in getall");
+            }
+            else {
+                res.send(objects);
+            }
+        });
     }
-    app.get('/areasalesman', getAll)
+
+    app.get('/areasalesman', getAll);
+    //end
+
+    //starts get api 
+
+    function get(req, res) {
+        var tables = require("./tables_controller.js");
+        tables.get("areasalesman", function (err, objects) {
+            if (err) {
+                res.send("Error in getall");
+            }
+            else {
+                res.send(objects);
+            }
+        });
+    }
+
+    //end
+
 }

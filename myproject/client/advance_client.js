@@ -1,6 +1,7 @@
 $(document).ready(onReady);
 function onReady() {
     $.get("http://127.0.0.1:8081/advance", onGetUsers);
+    $.get("http://127.0.0.1:8081/advance", onTable);
     $("#save-button").click(onSaveButtonClick);
     $("#update-button").click(onUpdateButtonClick);
     $("#delete-button").click(onDeleteButtonClick);
@@ -113,4 +114,7 @@ function updateTextboxes(user) {
     $("#reason").val(user.reason);
     $("#amount").val(user.amount);
 
+}
+function onTable(createTables) {
+    $.get("http://127.0.0.1:8081/advance", createTables);
 }

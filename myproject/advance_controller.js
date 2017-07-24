@@ -18,6 +18,7 @@ module.exports = function (app) {
     }
     app.delete('/advance/:id', deleteFile);
     ////end
+
     ///start put api
     function put(req, res) {
         var postedUser = req.body;
@@ -37,6 +38,7 @@ module.exports = function (app) {
     }
     app.put('/advance/:id', put);
     ///end
+
     function indexOf(userId, usersArray) {
         for (var i = 0; i < usersArray.length; i++) {
             if (usersArray[i].id == userId) {
@@ -64,7 +66,7 @@ module.exports = function (app) {
     // start post api in table
     function post(req, res) {
         var postedUser = req.body;
-        var dboperations = require("./db-operations.js");
+        var dboperations = require("./db_operations.js");
         dboperations.save("advance", postedUser, function (err, result) {
             if (err) {
                 res.send("Error in save");
@@ -87,7 +89,7 @@ module.exports = function (app) {
     //starts getall in table
 
     function getAll(req, res) {
-        var dboperations = require("./db-operations.js");
+        var dboperations = require("./db_operations.js");
         dboperations.getAll("advance", function (err, objects) {
             if (err) {
                 res.send("Error in getall");
@@ -101,4 +103,19 @@ module.exports = function (app) {
     app.get('/advance', getAll);
     //end
 
+    //starts get api 
+
+    function get(req, res) {
+        var tables = require("./tables_controller.js");
+        tables.get("advance", function (err, objects) {
+            if (err) {
+                res.send("Error in get");
+            }
+            else {
+                res.send(objects);
+            }
+        });
+    }
+
+    //end
 }

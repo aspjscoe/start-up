@@ -22,7 +22,7 @@ var beastController = require('./beats_controller');
 beastController(app);
 var billDetailsController = require('./billdetails_controller');
 billDetailsController(app);
-var billItemDetailsController = require('./billitemdetails_controller'); 
+var billItemDetailsController = require('./billitemdetails_controller');
 billItemDetailsController(app);
 var brandsController = require('./brands_controller');
 brandsController(app);
@@ -108,10 +108,6 @@ var unitsController = require('./units_controller');
 unitsController(app);
 var varietyController = require('./variety_controller');
 varietyController(app);
-
-var tablesController = require('./tables_controller');
-tablesController(app);
-
 
 
 app.get('/', function (req, res) {
