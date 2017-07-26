@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+     $.post("http://127.0.0.1:8081/users",
+        {
+  userName:"abarna"
+        },
+        function(data){
+             $("#div1").html(data);
+        });
+   });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2> Text</h2></div>
+<button>Get </button>
+               
+
+</body>
+</html>

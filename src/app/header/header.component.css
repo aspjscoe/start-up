@@ -1,0 +1,35 @@
+ div.base
+    {
+    
+    border:solid royalblue 1px;
+     height:393px;
+    width:100%;
+    }
+    
+    .active
+{
+background-color:White;
+border-bottom-color:yellowgreen;
+}
+    .small
+    {
+    font-size:x-small;	
+    }
+    a
+    {
+      
+    margin-top:-40px;
+ 	font-family:Verdana;
+ 	float:left;
+    background-color:lightgray;
+ 	border:solid white 1px;
+ 	border-bottom-width:5px;
+ 	 height:1cm;
+ 	 width:100px;
+ 	 padding-left:5px;
+ 	 text-align:center;
+ 	}
+.bxslider
+{
+margin-top: 0px;
+}
