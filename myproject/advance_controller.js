@@ -63,45 +63,8 @@ module.exports = function (app) {
     }
     app.get('/advance/:id', getById);
 
-    // start post api in table
-    function post(req, res) {
-        var postedUser = req.body;
-        var dboperations = require("./db_operations.js");
-        dboperations.save("advance", postedUser, function (err, result) {
-            if (err) {
-                res.send("Error in save");
-            }
-            else {
-                dboperations.getAll("advance", function (err, objects) {
-                    if (err) {
-                        res.send("Error in save");
-                    }
-                    else {
-                        res.send(objects);
-                    }
-                });
-            }
-        });
-    }
-
-    app.post('/advance', post);
-    //end
-    //starts getall in table
-
-    function getAll(req, res) {
-        var dboperations = require("./db_operations.js");
-        dboperations.getAll("advance", function (err, objects) {
-            if (err) {
-                res.send("Error in getall");
-            }
-            else {
-                res.send(objects);
-            }
-        });
-    }
-
-    app.get('/advance', getAll);
-    //end
+   
+ 
 
     //starts get api 
 
@@ -118,4 +81,16 @@ module.exports = function (app) {
     }
 
     //end
+    function get(req, res) {
+        var advance = require("./common_controller.js");
+        advance.get("advance", function (err, objects) {
+            if (err) {
+                res.send("Error in get");
+            }
+            else {
+                res.send(objects);
+            }
+        });
+    }
+
 }

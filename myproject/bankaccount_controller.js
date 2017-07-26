@@ -62,26 +62,30 @@ module.exports = function (app) {
     }
     app.get('/bankaccount/:id', getById);
 
+//starts get api 
 
-
-    function post(req, res) {
-        var postedUser = req.body;
-        var fs = require("fs");
-        var data = fs.readFileSync("bankaccount.json");
-        var bankaccount = JSON.parse(data);
-        bankaccount.push(postedUser);
-        var dataToSave = JSON.stringify(bankaccount);
-        fs.writeFileSync("bankaccount.json", dataToSave);
-        res.send(bankaccount);
+    function get(req, res) {
+        var tables = require("./tables_controller.js");
+        tables.get("bankaccount", function (err, objects) {
+            if (err) {
+                res.send("Error in getall");
+            }
+            else {
+                res.send(objects);
+            }
+        });
     }
-    app.post('/bankaccount', post);
 
-
-    function getAll(req, res) {
-        var fs = require('fs');
-        var data = fs.readFileSync("bankaccount.json");
-        var bankaccount = JSON.parse(data);
-        res.send(bankaccount);
+    function get(req, res) {
+        var advance = require("./common_controller.js");
+        advance.get("bankaccount", function (err, objects) {
+            if (err) {
+                res.send("Error in getall");
+            }
+            else {
+                res.send(objects);
+            }
+        });
     }
-    app.get('/bankaccount', getAll)
+
 }

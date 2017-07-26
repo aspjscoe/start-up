@@ -5,7 +5,7 @@ module.exports = function (app) {
         var fs = require("fs");
         var data = fs.readFileSync("areasalesman.json");
         var areasalesman = JSON.parse(data);
-        var userIndex = indexOf(req.params.id, areasalesman);
+        var userIndex = indexOf(req.params.id, advance);
         if (userIndex != -1) {
             areasalesman.splice(userIndex, 1);
             var dataToSave = JSON.stringify(areasalesman);
@@ -18,6 +18,7 @@ module.exports = function (app) {
     }
     app.delete('/areasalesman/:id', deleteFile);
     ////end
+
     ///start put api
     function put(req, res) {
         var postedUser = req.body;
@@ -37,6 +38,7 @@ module.exports = function (app) {
     }
     app.put('/areasalesman/:id', put);
     ///end
+
     function indexOf(userId, usersArray) {
         for (var i = 0; i < usersArray.length; i++) {
             if (usersArray[i].id == userId) {
@@ -61,54 +63,16 @@ module.exports = function (app) {
     }
     app.get('/areasalesman/:id', getById);
 
+   
+ 
 
-    // start post api in table
-    function post(req, res) {
-        var postedUser = req.body;
-        var dboperations = require("./db_operations.js");
-        dboperations.save("areasalesman", postedUser, function (err, result) {
-            if (err) {
-                res.send("Error in save");
-            }
-            else {
-                dboperations.getAll("areasalesman", function (err, objects) {
-                    if (err) {
-                        res.send("Error in save");
-                    }
-                    else {
-                        res.send(objects);
-                    }
-                });
-            }
-        });
-    }
-
-    app.post('/areasalesman', post);
-    //end
-    //starts getall in table
-
-    function getAll(req, res) {
-        var dboperations = require("./db_operations.js");
-        dboperations.getAll("areasalesman", function (err, objects) {
-            if (err) {
-                res.send("Error in getall");
-            }
-            else {
-                res.send(objects);
-            }
-        });
-    }
-
-    app.get('/areasalesman', getAll);
-    //end
-
-    //starts get api 
+  //starts get api 
 
     function get(req, res) {
         var tables = require("./tables_controller.js");
         tables.get("areasalesman", function (err, objects) {
             if (err) {
-                res.send("Error in getall");
+                res.send("Error in get");
             }
             else {
                 res.send(objects);
@@ -117,5 +81,16 @@ module.exports = function (app) {
     }
 
     //end
-
+    function get(req, res) {
+        var areasalesman = require("./common_controller.js");
+        areasalesman.get("areasalesman", function (err, objects) {
+            if (err) {
+                res.send("Error in get");
+            }
+            else {
+                res.send(objects);
+            }
+        });
+    }
+    
 }

@@ -1,6 +1,6 @@
 $(document).ready(onReady);
 function onReady() {
-    $.get("http://127.0.0.1:8081/areasalesman", onGetUsers);
+   $.get("http://127.0.0.1:8081/areasalesman", onGetUsers);
     $.get("http://127.0.0.1:8081/areasalesman", onTable);
     $("#save-button").click(onSaveButtonClick);
     $("#update-button").click(onUpdateButtonClick);

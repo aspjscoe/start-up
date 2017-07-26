@@ -1,6 +1,7 @@
 $(document).ready(onReady);
 function onReady() {
     $.get("http://127.0.0.1:8081/bankaccount", onGetUsers);
+       $.get("http://127.0.0.1:8081/bankaccount", onTable);
     $("#save-button").click(onSaveButtonClick);
     $("#update-button").click(onUpdateButtonClick);
     $("#delete-button").click(onDeleteButtonClick);
@@ -137,4 +138,7 @@ function updateTextboxes(user) {
     $("#fromtype").val(user.fromtype);
     $("#paytype").val(user.paytype);
     $("#chequeno").val(user.chequeno)
+}
+function onTable(createTables) {
+    $.get("http://127.0.0.1:8081/bankaccount", createTables);
 }
